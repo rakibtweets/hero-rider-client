@@ -1,0 +1,19 @@
+.signUp__header {
+  color: #38d39f;
+  font-weight: 500;
+  font-size: 1.4em;
+  line-height: 27px;
+}
+level {
+  background-color: #fff;
+  font-weight: 500;
+  margin-bottom: 0;
+  line-height: 0.5em;
+  padding: 3px 5px;
+  margin-left: 1em;
+  position: relative;
+  z-index: 10;
+}
+.required {
+  color: #d60000;
+}
