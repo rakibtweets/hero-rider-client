@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RiderSignUp from './Pages/Login/RiderSignUp/RiderSignUp';
 import AuthProvider from './Context/AuthProvider';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
+import Navigation from './Pages/Shared/Navigation/Navigation';
 
 function App() {
   return (
@@ -14,7 +15,15 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/rider-signUp" element={<RiderSignUp />} />
-            <Route path="/profilePage" element={<ProfilePage />} />
+            <Route
+              path="/profilePage"
+              element={
+                <>
+                  <Navigation />
+                  <ProfilePage />
+                </>
+              }
+            />
           </Routes>
         </Router>
       </AuthProvider>

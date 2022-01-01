@@ -22,7 +22,7 @@ const RiderSignUpForm = () => {
       swal('Error!', 'Password does not match', 'warning');
       return;
     }
-    registerNewUser(data.name, data.email, data.password, navigate);
+    registerNewUser(data.fullName, data.email, data.password, navigate);
     fetch('http://localhost:5000/riders', {
       method: 'POST',
       headers: {
