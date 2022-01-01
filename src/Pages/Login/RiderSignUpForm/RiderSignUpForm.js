@@ -2,16 +2,42 @@ import React from 'react';
 import './RiderSignUpForm.css';
 import { useForm } from 'react-hook-form';
 import { Col, Row } from 'react-bootstrap';
+import useAuth from '../../../Hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const RiderSignUpForm = () => {
+  const { registerNewUser } = useAuth();
+  const navigate = useNavigate();
+  // const location = useLocation();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
     data.role = 'Rider';
-    console.log(data);
+    if (data.password !== data.confirmPassword) {
+      swal('Error!', 'Password does not match', 'warning');
+      return;
+    }
+    registerNewUser(data.name, data.email, data.password, navigate);
+    fetch('http://localhost:5000/riders', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.insertedId) {
+          swal('Registration Successfull', 'View Profile', 'success');
+          reset();
+        }
+        // console.log(result);
+      });
   };
 
   return (
