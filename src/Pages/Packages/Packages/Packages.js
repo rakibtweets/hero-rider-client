@@ -3,6 +3,7 @@ import './Packages.css';
 import { Card, Col, Container, Row, Button } from 'react-bootstrap';
 import carPic from '../../../images/car.jpg';
 import bikePic from '../../../images/blue-bike.jpg';
+import { Link } from 'react-router-dom';
 
 const Packages = () => {
   return (
@@ -21,7 +22,9 @@ const Packages = () => {
                   We provide quality training
                 </Card.Text>
                 <div className=" d-flex justify-content-between align-items-center">
-                  <Button variant="primary">Enroll Now</Button>
+                  <Link to="/payment">
+                    <Button variant="primary">Enroll Now</Button>
+                  </Link>
                   <h3 className="fw-bold text-warnig"> $ 200</h3>
                 </div>
               </Card.Body>
@@ -43,7 +46,9 @@ const Packages = () => {
                   We provide quality training
                 </Card.Text>
                 <div className=" d-flex justify-content-between align-items-center">
-                  <Button variant="primary">Enroll Now</Button>
+                  <Link to="/payment">
+                    <Button variant="primary">Enroll Now</Button>
+                  </Link>
                   <h3 className="fw-bold text-warnig"> $ 100</h3>
                 </div>
               </Card.Body>

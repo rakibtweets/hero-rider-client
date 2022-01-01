@@ -13,6 +13,8 @@ import LearnerSignUp from './Pages/Login/LearnerSignUp/LearnerSignUp';
 import MakeAdmin from './Pages/Login/MakeAdmin/MakeAdmin';
 import AdminRoute from './Pages/Login/AdminRoute/AdminRoute';
 import RegisterdUser from './Pages/Dashboard/RegisterdUser/RegisterdUser';
+import Payment from './Pages/Dashboard/Payment/Payment';
+import Footer from './Pages/Shared/Footer/Footer';
 
 function App() {
   return (
@@ -69,7 +71,19 @@ function App() {
                 </>
               }
             />
+            <Route
+              path="/payment"
+              element={
+                <>
+                  <Navigation />
+                  <PrivateRoute>
+                    <Payment />
+                  </PrivateRoute>
+                </>
+              }
+            />
           </Routes>
+          {/* <Footer /> */}
         </Router>
       </AuthProvider>
     </div>
