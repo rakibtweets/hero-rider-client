@@ -19,23 +19,18 @@ const Navigation = () => {
         />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto d-flex align-items-center">
-            <Link className="nav-item" to="/">
+            <Link className="nav-item" to="/home">
               Home
             </Link>
             <Link className="nav-item" to="/packages">
               Packages
             </Link>
-            <Link className="nav-item" to="/packages">
-              About
-            </Link>
           </Nav>
+
           {!user.email ? (
             <Nav className="ms-auto d-flex align-items-center ">
-              <Link className="nav-item" to="/rider-signUp">
-                Sign as Rider
-              </Link>
-              <Link className="nav-item" eventKey={2} to="/memes">
-                Sign as Learner
+              <Link className="nav-item" to="/login">
+                Login
               </Link>
             </Nav>
           ) : (

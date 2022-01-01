@@ -6,6 +6,10 @@ import RiderSignUp from './Pages/Login/RiderSignUp/RiderSignUp';
 import AuthProvider from './Context/AuthProvider';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import Navigation from './Pages/Shared/Navigation/Navigation';
+import Login from './Pages/Login/Login/Login';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import Packages from './Pages/Packages/Packages/Packages';
+import LearnerSignUp from './Pages/Login/LearnerSignUp/LearnerSignUp';
 
 function App() {
   return (
@@ -14,13 +18,29 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/packages"
+              element={
+                <>
+                  <Navigation />
+                  <PrivateRoute>
+                    <Packages />
+                  </PrivateRoute>
+                </>
+              }
+            />
             <Route path="/rider-signUp" element={<RiderSignUp />} />
+            <Route path="/learner-signUp" element={<LearnerSignUp />} />
             <Route
               path="/profilePage"
               element={
                 <>
                   <Navigation />
-                  <ProfilePage />
+                  <PrivateRoute>
+                    <ProfilePage />
+                  </PrivateRoute>
                 </>
               }
             />

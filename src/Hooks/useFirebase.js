@@ -10,7 +10,6 @@ import {
   updateProfile,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-// import swal from 'sweetalert';
 
 initializeFirebase();
 
@@ -54,6 +53,27 @@ const useFirebase = () => {
           //   swal('Registration Successfull', 'Please Login', 'success');
           navigate('/profilePage');
         }
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setAuthError(errorMessage);
+      })
+      .finally(() => setIsLoading(false));
+  };
+
+  // login existing user
+
+  const loginUser = (email, password, location, navigate) => {
+    setIsLoading(true);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        // redirect location
+        const redirectUrl = location?.state?.from || '/home';
+        navigate(redirectUrl);
+        // Signed in
+        setUser(result.user);
+
+        setAuthError('');
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -110,6 +130,7 @@ const useFirebase = () => {
     registerNewUser,
     userLogOut,
     signInWithEmailAndPassword,
+    loginUser,
   };
 };
 

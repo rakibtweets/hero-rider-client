@@ -1,0 +1,7 @@
+.card__section {
+  border: 1px solid #ababab;
+  border-radius: 4px;
+  max-width: 70%;
+  height: 400px;
+  overflow: hidden;
+}

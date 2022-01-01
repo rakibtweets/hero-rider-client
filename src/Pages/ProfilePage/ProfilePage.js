@@ -15,10 +15,12 @@ const ProfilePage = () => {
   }, [user.email]);
   return (
     <>
-      <div>
-        <h2 className="text-center text-primary fw-bold my">Profile Page</h2>
-      </div>
-      {user.email && (
+      {user?.email && (
+        <div>
+          <h2 className="text-center text-primary fw-bold my">Profile Page</h2>
+        </div>
+      )}
+      {user?.email && (
         <Container>
           <Row xs={1} lg={2} className="g-5">
             <Col xs={12} lg={5}>
