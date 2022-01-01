@@ -12,6 +12,7 @@ import Packages from './Pages/Packages/Packages/Packages';
 import LearnerSignUp from './Pages/Login/LearnerSignUp/LearnerSignUp';
 import MakeAdmin from './Pages/Login/MakeAdmin/MakeAdmin';
 import AdminRoute from './Pages/Login/AdminRoute/AdminRoute';
+import RegisterdUser from './Pages/Dashboard/RegisterdUser/RegisterdUser';
 
 function App() {
   return (
@@ -40,6 +41,17 @@ function App() {
                   <Navigation />
                   <AdminRoute>
                     <MakeAdmin />
+                  </AdminRoute>
+                </>
+              }
+            />
+            <Route
+              path="/registeredUser"
+              element={
+                <>
+                  <Navigation />
+                  <AdminRoute>
+                    <RegisterdUser />
                   </AdminRoute>
                 </>
               }

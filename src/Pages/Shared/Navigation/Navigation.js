@@ -33,7 +33,7 @@ const Navigation = () => {
                 <NavDropdown.Item as={Link} to="/makeAdmin">
                   Make Admin
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="registeredUser">
+                <NavDropdown.Item as={Link} to="/registeredUser">
                   Registerd User
                 </NavDropdown.Item>
               </NavDropdown>
