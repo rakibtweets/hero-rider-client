@@ -10,6 +10,8 @@ import Login from './Pages/Login/Login/Login';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import Packages from './Pages/Packages/Packages/Packages';
 import LearnerSignUp from './Pages/Login/LearnerSignUp/LearnerSignUp';
+import MakeAdmin from './Pages/Login/MakeAdmin/MakeAdmin';
+import AdminRoute from './Pages/Login/AdminRoute/AdminRoute';
 
 function App() {
   return (
@@ -28,6 +30,17 @@ function App() {
                   <PrivateRoute>
                     <Packages />
                   </PrivateRoute>
+                </>
+              }
+            />
+            <Route
+              path="/makeAdmin"
+              element={
+                <>
+                  <Navigation />
+                  <AdminRoute>
+                    <MakeAdmin />
+                  </AdminRoute>
                 </>
               }
             />

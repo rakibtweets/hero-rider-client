@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import initializeFirebase from '../Pages/Login/Firebase/firebase.init';
 import {
   getAuth,
-  //   signInWithPopup,
-  //   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
@@ -17,10 +15,9 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [authError, setAuthError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  //   const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(false);
 
   const auth = getAuth();
-  //   const googleProvider = new GoogleAuthProvider();
 
   // Register new user
 
@@ -35,7 +32,7 @@ const useFirebase = () => {
 
         // save user to database
         saveUser(email, name, 'POST');
-        // history.push('/home');
+
         //Auth Erros
         setAuthError('');
 
@@ -108,6 +105,16 @@ const useFirebase = () => {
     return () => unsubscribe;
   }, [auth]);
 
+  // checking admin or not
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAdmin(data.admin);
+      });
+  }, [user?.email]);
+
   // userSignOut
 
   const userLogOut = () => {
@@ -126,7 +133,7 @@ const useFirebase = () => {
     user,
     authError,
     isLoading,
-    // admin,
+    admin,
     registerNewUser,
     userLogOut,
     signInWithEmailAndPassword,

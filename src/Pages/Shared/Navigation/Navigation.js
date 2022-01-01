@@ -1,12 +1,11 @@
 import React from 'react';
 import './Navigation.css';
-import { Container, Nav, Navbar, Button } from 'react-bootstrap';
+import { Container, Nav, Navbar, Button, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 
 const Navigation = () => {
-  const { user, userLogOut } = useAuth();
-  console.log(user);
+  const { user, userLogOut, admin } = useAuth();
   return (
     <Navbar collapseOnSelect expand="lg" sticky="top" className="nav-bg py-3">
       <Container>
@@ -25,6 +24,20 @@ const Navigation = () => {
             <Link className="nav-item" to="/packages">
               Packages
             </Link>
+            {admin && (
+              <NavDropdown
+                className="text-white"
+                title="DashBoard"
+                id="collasible-nav-dropdown"
+              >
+                <NavDropdown.Item as={Link} to="/makeAdmin">
+                  Make Admin
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="registeredUser">
+                  Registerd User
+                </NavDropdown.Item>
+              </NavDropdown>
+            )}
           </Nav>
 
           {!user.email ? (
@@ -38,6 +51,7 @@ const Navigation = () => {
               <Link className="nav-item" to="/profilePage">
                 {user?.displayName}
               </Link>
+
               <Button onClick={userLogOut} className="nav-item">
                 LogOut
               </Button>
